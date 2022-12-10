@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithGoogle } from '../../../src/firebase/providers';
 import { checkingCredentials, login, logout, startCreatingUserWithEmailPassword, startGoogleSignIn, startLoginWithEmailPassword, startLogout } from '../../../src/store/auth';
 import { checkingAuthentication } from '../../../src/store/auth/thunks';
@@ -30,9 +22,6 @@ describe('tests on authThunks.js', () => {
         // const v = checkingCredentials();
         await checkingAuthentication()(dispatch);
         expect(dispatch).toHaveBeenCalledWith( checkingCredentials() );
-        
-        // console.log(v)
-
      });
 
 

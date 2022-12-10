@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { CalendarPage } from "../../src/calendar";
@@ -22,11 +14,9 @@ jest.mock("../../src/calendar", () => ({
 
 describe('tests on AppRouter', () => { 
 
-
     const mockCheckAuthToken = jest.fn();
 
     test('should render Loading h3 and should call checkAuthToken', () => { 
-        
 
         useAuthStore.mockReturnValue({
             status: 'checking',
@@ -40,7 +30,6 @@ describe('tests on AppRouter', () => {
     });
 
     test('should render login auth if user is not authenticated', () => { 
-        
 
         useAuthStore.mockReturnValue({
             status: 'not-authenticated',
@@ -60,7 +49,6 @@ describe('tests on AppRouter', () => {
     });
 
     test('should render the <Calendar /> if user is not authenticated', () => { 
-        
 
         useAuthStore.mockReturnValue({
             status: 'authenticated',

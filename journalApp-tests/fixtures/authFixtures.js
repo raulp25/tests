@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const initialState = {
     status: 'checking',  //* || authenticated || not authenticated 
     uid: null,
@@ -21,7 +11,7 @@ export const authenticatedState = {
     status: 'authenticated',  //* || authenticated || not authenticated 
     uid: 'joecam21',
     email: 'joe21@gmail.com',
-    displayName: 'Joanna Camacho',
+    displayName: 'Joanna Lauren',
     photoURL: 'https://demo.jpg',
     errorMessage: null,  
 }
@@ -46,7 +36,7 @@ export const notAuthenticatedStateWithErrorMessage = {
 export const demoUser = {
     uid: 'joecam21',
     email: 'joe21@gmail.com',
-    displayName: 'Joanna Camacho',
+    displayName: 'Joanna Lauren',
     photoURL: 'https://demo.jpg'
 
 }

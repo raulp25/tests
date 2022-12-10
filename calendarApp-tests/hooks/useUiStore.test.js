@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import { configureStore } from "@reduxjs/toolkit";
 import { act, renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
@@ -28,10 +19,8 @@ const getMockStore = ( initialState ) => {
     })
 }
 
-
 describe('tests on useUiStore.js', () => { 
-    
-
+   
     test('should render default values', () => { 
         //* el isDateModalOpen lo sacamos del uiSlice del initialState 
         //* con todo este desmadre del mockStore ya podemos poner el estado del store en cualquier forma con cualquier argumento
@@ -43,7 +32,6 @@ describe('tests on useUiStore.js', () => {
         wrapper: ({ children }) => <Provider store={ mockStore }>{ children }</Provider>
        });
 
-    //    console.log(result)
        expect(result.current).toStrictEqual({
         isDateModalOpen: false,
         openDateModal: expect.any(Function),
@@ -67,7 +55,6 @@ describe('tests on useUiStore.js', () => {
        const { openDateModal } = result.current;
     //    cuando se ejecuta funcion o algo que modifique el state de react se necesita el act 
        act( () => { openDateModal(); } );
-       //    console.log({result: result.current, isDateModalOpen})
        expect( result.current.isDateModalOpen ).toBeTruthy();
 
       });
@@ -85,7 +72,6 @@ describe('tests on useUiStore.js', () => {
        const { closeDateModal } = result.current;
     //    cuando se ejecuta funcion o algo que modifique el state de react se necesita el act 
        act( () => { closeDateModal(); } );
-       //    console.log({result: result.current, isDateModalOpen})
        expect( result.current.isDateModalOpen ).toBeFalsy();
 
       });
@@ -103,7 +89,6 @@ describe('tests on useUiStore.js', () => {
     //    const { toggleDateModal } = result.current;
     //    cuando se ejecuta funcion o algo que modifique el state de react se necesita el act 
        act( () => { result.current.toggleDateModal(); } );
-        //   console.log({result: result.current.isDateModalOpen})
        expect( result.current.isDateModalOpen ).toBeFalsy();
 
        act( () => { result.current.toggleDateModal(); } ); 

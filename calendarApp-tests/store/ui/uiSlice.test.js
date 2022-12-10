@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import { onCloseDateModal, onOpenDateModal, uiSlice } from "../../../src/store/ui/uiSlice";
 
 
@@ -11,8 +5,7 @@ describe('tests on uiSlice.js', () => {
     
 
     test('should return defualt state', () => { 
-        
-        // console.log(uiSlice.getInitialState());
+    
         expect( uiSlice.getInitialState() ).toEqual({ isDateModalOpen: false });
         expect( uiSlice.getInitialState().isDateModalOpen ).toBeFalsy();
         
@@ -23,7 +16,7 @@ describe('tests on uiSlice.js', () => {
         let state = uiSlice.getInitialState();
 
         state = uiSlice.reducer(state, onOpenDateModal());
-        // console.log(state);
+
         expect( state ).toEqual({ isDateModalOpen: true });
         expect( state.isDateModalOpen ).not.toBeFalsy();
         expect( state.isDateModalOpen ).toBeTruthy();

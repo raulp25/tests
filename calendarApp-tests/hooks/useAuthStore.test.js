@@ -1,18 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { configureStore } from "@reduxjs/toolkit"
 import { act, renderHook, waitFor } from "@testing-library/react"
 import { Provider } from "react-redux"
@@ -21,7 +6,6 @@ import { useAuthStore } from "../../src/hooks/useAuthStore"
 import { authSlice } from "../../src/store"
 import { notAuthenticatedState, initialState } from "../fixtures/authStates"
 import { testUserCredentials } from "../fixtures/testUser"
-
 
 
 const getMockStore = ( initialState ) => {
@@ -36,7 +20,6 @@ const getMockStore = ( initialState ) => {
 }
 
 
-
 describe('Tests on useAuthStore.js', () => { 
     
     beforeEach(() => localStorage.clear() );
@@ -48,7 +31,6 @@ describe('Tests on useAuthStore.js', () => {
         const {result} = renderHook( () => useAuthStore(), {
             wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider> 
         } );
-            // console.log(result)
         expect(result.current).toStrictEqual({
             status: 'checking',
             user: {},
@@ -70,8 +52,6 @@ describe('Tests on useAuthStore.js', () => {
             const {result} = renderHook( () => useAuthStore(), {
                 wrapper: ({ children }) => <Provider store={ mockStore }>{children}</Provider> 
             } );
-
-            // console.log(result.current)
             
             await act(async() => await result.current.startLogin( testUserCredentials ));
             console.log(result.current);
@@ -97,8 +77,6 @@ describe('Tests on useAuthStore.js', () => {
             const {result} = renderHook( () => useAuthStore(), {
                 wrapper: ({ children }) => <Provider store={ mockStore }>{children}</Provider> 
             } );
-
-            // console.log(result.current)
             
             await act(async() => await result.current.startLogin({ user: 'bademail@gmail.com', password: 'cherokonaSRT' }));
             console.log(result.current);
@@ -106,7 +84,6 @@ describe('Tests on useAuthStore.js', () => {
             const { errorMessage, status, user }= result.current;
 
             console.log({ errorMessage, status, user });
-            // console.log(localStorage.getItem('token'))
             //* como estamos haciendo prueba de integracion con el backend el errorMessage en el equal podemos dejarlo
             //* como expect.any(String) por si no importara el texto pero en esta caso lo dejamos, queda a discresion
             expect(localStorage.getItem('token')).toBe(null);
@@ -131,7 +108,6 @@ describe('Tests on useAuthStore.js', () => {
                 wrapper: ({ children }) => <Provider store={ mockStore }>{children}</Provider> 
             } );
 
-            // console.log(result.current)
             const spy = jest.spyOn( calendarApi, 'post').mockReturnValue({
                 data:
                 {   ok: true,
@@ -166,8 +142,6 @@ describe('Tests on useAuthStore.js', () => {
             const {result} = renderHook( () => useAuthStore(), {
                 wrapper: ({ children }) => <Provider store={ mockStore }>{children}</Provider> 
             } );
-
-            // console.log(result.current)
             
             await act(async() => await result.current.startRegister(testUserCredentials));
             console.log(result.current);
@@ -196,8 +170,6 @@ describe('Tests on useAuthStore.js', () => {
             console.log('token', localStorage.getItem('token'))
             
             await act(async() => await result.current.checkAuthToken());
-            // console.log(result.current);
-
 
             const { errorMessage, status, user } = result.current;
 
@@ -213,7 +185,6 @@ describe('Tests on useAuthStore.js', () => {
           test('should authenticate user when checkAuthToken is invoked and a JWT is provided', async() => {   
 
             const { data } = await calendarApi.post('/auth', testUserCredentials);
-            // console.log(data)
             localStorage.setItem('token', data.token);
 
             const mockStore = getMockStore({...initialState})
@@ -224,8 +195,6 @@ describe('Tests on useAuthStore.js', () => {
             console.log('token', localStorage.getItem('token'))
             
             await act(async() => await result.current.checkAuthToken());
-            // console.log(result.current);
-
 
             const { errorMessage, status, user } = result.current;
 
@@ -239,9 +208,6 @@ describe('Tests on useAuthStore.js', () => {
             
            })
 
-
-
-        
     })
 
     

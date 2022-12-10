@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const events = [
     {
             id: '1',
@@ -47,7 +36,7 @@ export const calendarWithActiveEventsState = {
 }
 
 
-// console.log(calendarWithActiveEventsState)
+
 
 
 

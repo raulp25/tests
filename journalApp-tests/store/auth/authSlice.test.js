@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import { authSlice, checkingCredentials, login, logout } from "../../../src/store/auth/authSlice"
 import { authenticatedState, demoUser, initialState, notAuthenticatedStateWithErrorMessage, notAuthenticatedStateWithoutErrorMessage } from "../../fixtures/authFixtures";
 
@@ -18,22 +11,12 @@ describe('tests on authSlice.js', () => {
 
         const state = authSlice.reducer( initialState, {} );
         expect( state ).toEqual(initialState);
-        // console.log(authSlice);
-        // console.log(authSlice)
-        // console.log(state);
-        // console.log(initialState);
      });
 
      test('should do/run the authentication/login',  () => { 
         
          const state = authSlice.reducer( initialState, login(demoUser) );
          expect(state).toEqual(authenticatedState);
-
-        // console.log(login(demoUser))
-        // console.log(state)
-        // console.log(demoUser)
-        // console.log(authenticatedState)
-
       });
 
      test('should do/run the not authenticated/logout without errorMessage prop ',  () => { 
@@ -41,10 +24,6 @@ describe('tests on authSlice.js', () => {
          const state = authSlice.reducer( authenticatedState, logout() );
          
          expect(state).toEqual(notAuthenticatedStateWithoutErrorMessage);
-         
-         // console.log(state)
-         // console.log(demoUser)
-         // console.log(notAuthenticatedStateWithoutErrorMessage)
         });
         
      test('should do/run the not authenticated/logout with errorMessage prop ',  () => { 
@@ -53,10 +32,6 @@ describe('tests on authSlice.js', () => {
          const state = authSlice.reducer( authenticatedState, logout({ errorMessage}) );
          
          expect(state).toEqual(notAuthenticatedStateWithErrorMessage);
-         
-         //  console.log(state)
-         // console.log(logout(demoUser))
-        // console.log(notAuthenticatedStateWithErrorMessage)
          
         });
 

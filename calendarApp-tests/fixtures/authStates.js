@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const initialState = {
     
         status: 'checking', //'authenticating', 'not-authenticated' 

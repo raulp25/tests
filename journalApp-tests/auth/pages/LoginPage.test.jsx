@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 import { configureStore } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
@@ -22,19 +10,14 @@ import { authSlice } from "../../../src/store/auth";
         reducer: {
             auth: authSlice.reducer
         },
-        // preloadedState:{
-
-        // }
+        
     })
 
 
 
 describe('tests on LoginPage.jsx', () => { 
     
-
     test('should render the LoginPage Component', () => { 
-    
-
         render(
         <Provider store={ store } >
             <MemoryRouter>
@@ -44,15 +27,6 @@ describe('tests on LoginPage.jsx', () => {
         
         );
 
-        // screen-debug();
-
         expect(screen.getAllByAltText('Login')).toBeGreaterThanOrEqual(1);
-
-
-
      });
-
-
-
-
  })

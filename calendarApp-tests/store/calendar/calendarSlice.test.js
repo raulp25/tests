@@ -1,16 +1,5 @@
-
-
-
-
-
-
-
-
-
-
 import { calendarSlice, onAddNewEvent, onDeleteEvent, onLoadEvents, onLogoutCalendar, onSetActiveEvent, onUpdateEvent } from "../../../src/store/calendar/calendarSlice"
 import { calendarWithActiveEventsState, calendarWithEventsState, events, initialState } from "../../fixtures/calendarStates";
-
 
 
 describe('tests on calendarSlice.js', () => { 
@@ -18,9 +7,7 @@ describe('tests on calendarSlice.js', () => {
 
     test('should return initialState', () => { 
         
-
         const state = calendarSlice.getInitialState();
-        // console.log(state)
         expect(state).toStrictEqual(initialState);
 
      });
@@ -29,8 +16,6 @@ describe('tests on calendarSlice.js', () => {
         
 
         const state = calendarSlice.reducer( calendarWithEventsState ,onSetActiveEvent( events[0] ) );
-        // console.log(calendarWithEventsState)
-        console.log(state)
         expect(state.activeEvent).toStrictEqual(events[0]);
         expect(state).toStrictEqual(calendarWithActiveEventsState);
 
@@ -46,8 +31,6 @@ describe('tests on calendarSlice.js', () => {
             notes: 'buy tires'
         }
         const state = calendarSlice.reducer( calendarWithEventsState ,onAddNewEvent( newEvent ) );
-        // console.log(calendarWithEventsState)
-        console.log(state)
         expect(state.events).toStrictEqual([ ...events, newEvent ]);
         
     });
@@ -62,8 +45,6 @@ describe('tests on calendarSlice.js', () => {
             notes: 'Bring THE UDPDATES'
         }
         const state = calendarSlice.reducer( calendarWithEventsState ,onUpdateEvent( updatedEvent ) );
-        // console.log(calendarWithEventsState)
-        console.log(state)
         expect(state.events).toContain( updatedEvent );
         
      });
@@ -71,8 +52,6 @@ describe('tests on calendarSlice.js', () => {
     test('should execute onDeleteEvent action deleting active event', () => { 
         
         const state = calendarSlice.reducer( calendarWithActiveEventsState, onDeleteEvent() );
-        // console.log(calendarWithEventsState)
-        // console.log(state)
         expect(state.events).not.toContain( events[0] );
         expect(state.activeEvent).toBe( null );
         expect(state.events).toStrictEqual([ events[1] ]);
@@ -91,14 +70,11 @@ describe('tests on calendarSlice.js', () => {
 
         const dbEvents = [...events, newEvent ];
         const state = calendarSlice.reducer( initialState ,onLoadEvents(dbEvents) );
-        // console.log(calendarWithEventsState)
-        // console.log(state)
         expect(state.events).toStrictEqual( dbEvents );
         expect(state.isLoadingEvents).toBe( false );
 
         const newState = calendarSlice.reducer( state, onLoadEvents(dbEvents) )
         expect( state.events.length ).toBe( dbEvents.length );
-        // console.log(newState)
     });
     
     
@@ -106,9 +82,7 @@ describe('tests on calendarSlice.js', () => {
         
         const state = calendarSlice.reducer( calendarWithEventsState , onLogoutCalendar() );
         expect(state).toStrictEqual( initialState );
-        // console.log(calendarWithEventsState)
-        // console.log(state)
-        
+
     });
     
 })

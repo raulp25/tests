@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const testUserCredentials =  {
 
     email: 'test@gmail.com',
